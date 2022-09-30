@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 	<head>
-    <meta charset="utf-8">
-    <title>Лабораторна №1</title>
+        <meta charset="utf-8">
+        <title>Лабораторна №1</title>
 		<meta name="author" content="Viktoriia Yevtushenko">
 		<style>
 		body{
@@ -25,28 +25,41 @@
 		</style>
     </head>
     <body>
+	<form>
+		<label for="lang-switch">
+			<span lang="ukr">Мова</span>
+			<span lang="eng">Language</span>
+		</label>
+		<select id="lang-switch">
+			<option value="eng">English</option>
+			<option value="ukr" selected>Українська</option>
+		</select>
+		</form>
 		<header>
 		<center><h1>Hello world!</h1>
-		<h2>Це лабораторна робота №1</h2></center>
+		<h2><span lang="ukr">Це лабораторна робота №1</span>
+		<span lang="eng">This is lab project №1</span></h2></center>
+		
 		</header>
+
 		<main>
+		
 		<details>
-            <summary>Про мене</summary>
+            <summary><span lang="ukr">Про мене</span>
+		<span lang="eng">About me</span></summary>
+				<p><span lang="ukr">Євтушенко Вікторія Павлівна,<br/>КП-03,<br/>ФПМ.</span><span lang="eng">Yevtushenko Viktoriia,<br/>KP-03,<br/>FAM.</span></p>
+        </details>
+		<details>
+            <summary><span lang="ukr">Очікування від курсу</span><span lang="eng">Сourse expectations</span></summary>
             <ul>
-                <p>Євтушенко Вікторія Павлівна,<br/>КП-03,<br/>ФПМ.</p>
+                <li><span lang="ukr">поглибити та застосувати на практиці знання з HTML та CSS;</span><span lang="eng">deepen and practically apply knowledge of HTML and CSS;</span></li>
+                <li><span lang="ukr">навчитися працювати з HTTP API;</span><span lang="eng">learn how to work with the HTTP API;</span></li>
+                <li><span lang="ukr">дізнатися більше про клієнт-сервісну архітектуру;</span><span lang="eng">learn more about client-service architecture;</span></li>
+                <li><span lang="ukr">почати створювати захищені вебдодатки.</span><span lang="eng">start building secure web applications.</span></li>
             </ul>
         </details>
 		<details>
-            <summary>Очікування від курсу</summary>
-            <ul>
-                <li>поглибити та застосувати на практиці знання з HTML та CSS;</li>
-                <li>навчитися працювати з HTTP API;</li>
-                <li>дізнатися більше про клієнт-сервісну архітектуру;</li>
-                <li>почати створювати захищені вебдодатки.</li>
-            </ul>
-        </details>
-		<details>
-            <summary>Попередній досвід розробки</summary>
+            <summary><span lang="ukr">Попередній досвід розробки</span><span lang="eng">Previous development experience</span></summary>
             <ul>
                 <li>C#;</li>
                 <li>Python;</li>
@@ -55,4 +68,25 @@
         </details>
 		</main>
     </body>
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script>
+$('[lang]').hide(); // hide all lang attributes on start.
+$('[lang="ukr"]').show(); // show just Ukrainian text
+$('#lang-switch').change(function () { // put onchange event when user select option from select
+    var lang = $(this).val(); // decide which language to display using switch case.
+    switch (lang) {
+        case 'eng':
+            $('[lang]').hide();
+            $('[lang="eng"]').show();
+        break;
+        case 'ko':
+            $('[lang]').hide();
+            $('[lang="ukr"]').show();
+        break;
+        default:
+            $('[lang]').hide();
+            $('[lang="ukr"]').show();
+        }
+});
+</script>
 </html>
